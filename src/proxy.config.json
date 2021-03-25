@@ -1,0 +1,32 @@
+{
+	"port": 3000,
+	"default_proxy_to_url": "",
+	"default_headers": {},
+	"host_patch": {
+		"enabled": true,
+		"url": "www.expressproxy.com"
+	},
+	"proxies": [
+		{
+			"id": "GET:generated_response",
+			"method": "GET",
+			"incoming_url_match": "/api/example/generated-response",
+			"mock_response": {
+				"status": 200,
+				"data_file_name": "example-response.mock.json"
+			}
+		},
+		{
+			"id": "GET:proxied_response",
+			"method": "GET",
+			"incoming_url_match": "/api/v1/domains/en",
+			"proxy_to_url": "https://od-api-demo.oxforddictionaries.com:443",
+			"headers": {
+				"app_id": "5037d509",
+				"app_key": "4dc1aebaa63721f0f8e79a55e2514bc7"
+			},
+			"body_data": {}
+		}
+
+	]
+}
